@@ -1,5 +1,5 @@
 <template>
-  <Tutorial/>
+  <Tutorial class="bg-red-500"/>
 </template>
 
 <script lang="ts">
