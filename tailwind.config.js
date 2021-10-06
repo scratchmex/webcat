@@ -1,9 +1,15 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   mode: 'jit',
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Fira Code', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
 }
