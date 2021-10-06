@@ -10,8 +10,8 @@
       overflow-y-auto
     "
   >
-    <TheNavbar class="px-16 py-6" />
-    <Nuxt class="flex-1" />
+    <TheNavbar class="lg:px-16 md:px-8 px-4 md:py-6 py-4" />
+    <Nuxt />
   </div>
 </template>
 

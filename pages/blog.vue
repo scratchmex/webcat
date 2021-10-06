@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-16">
+  <div class="lg:mx-16 md:mx-8 mx-4">
     <BlogPost
       v-for="blogpost in blogposts"
       :post="blogpost"

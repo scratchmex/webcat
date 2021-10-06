@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-green-100 pt-8 pb-12">
+  <div class="bg-green-100 md:mt-8 mt-4">
     <div class="text-sm text-right">{{ post.date }}</div>
     <h1 class="font-semibold">{{ post.title }}</h1>
     <p class="mt-4 text-justify">{{ post.text }}</p>
