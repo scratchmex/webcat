@@ -1,4 +1,5 @@
 # webcat
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9f204a28-67c0-43ef-8448-d404638025af/deploy-status)](https://app.netlify.com/sites/webcat-ivgo/deploys)
 
 ## Build Setup
 
