@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-red-100 flex justify-between">
-    <nuxt-link to="/" v-slot="{ isExactActive, href, navigate }">
+    <nuxt-link to="/" v-slot="{ isExactActive, href, navigate }" custom>
       <a :href="href" @click="navigate">
         <span class="group font-medium">
           <span class="text-green-500 group-hover:text-green-400"
@@ -14,7 +14,7 @@
       </a>
     </nuxt-link>
     <div class="flex">
-      <nuxt-link to="/blog" v-slot="{ isExactActive, href, navigate }">
+      <nuxt-link to="/blog" v-slot="{ isExactActive, href, navigate }" custom>
         <a
           :href="href"
           @click="navigate"
