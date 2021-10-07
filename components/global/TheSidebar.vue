@@ -1,8 +1,8 @@
 <template>
   <div
-    class="bg-yellow-100 fixed top-[3.75rem] md:top-[4.75rem] bottom-1 flex"
+    class="bg-yellow-100 absolute top-14 bottom-0 flex"
     :class="[
-      side == 'right' ? 'right-1 rounded-br-xl' : 'left-1 rounded-bl-xl',
+      side == 'right' ? 'right-0 rounded-br-xl' : 'left-0 rounded-bl-xl',
     ]"
   >
     <slot />
