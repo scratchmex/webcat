@@ -16,6 +16,15 @@
         </a>
       </li>
       <VerticalLine />
+      <li class="on-hover my-4">
+        <a
+          href="https://www.linkedin.com/in/ivangonzalez1107"
+          target="_blank"
+        >
+          <IconLinkedin class="w-6" />
+        </a>
+      </li>
+      <VerticalLine />
     </ul>
   </TheSidebar>
 </template>
