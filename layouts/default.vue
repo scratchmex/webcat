@@ -8,7 +8,6 @@
       v-screenx
       border-4 border-black
       rounded-xl
-      
     "
   >
     <TheNavbar class="lg:px-16 md:px-8 px-4 md:py-6 py-4" />
