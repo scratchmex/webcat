@@ -32,6 +32,8 @@ export default {
     '~/components/global',
     '~/components/blog',
     '~/components/home',
+    '~/components/icon',
+    '~/components/util',
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
