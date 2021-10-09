@@ -11,7 +11,7 @@
       overflow-hidden
     "
   >
-    <TheNavbar class="absolute inset-x-0 lg:px-16 md:px-8 px-4 md:py-6 py-4" />
+    <TheNavbar class="absolute inset-x-0 md:px-8 px-4 md:py-6 py-4" />
     <TheLeftbar class="hidden md:flex" />
 
     <div class="md:ml-12 mt-14 md:mt-[4.5rem] overflow-y-auto">
