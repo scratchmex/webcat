@@ -8,3 +8,10 @@
     src: url(~assets/font/FiraCode.woff2) format('woff2');
   }
 }
+
+@layer utilities {
+  .scrollbar {
+    scrollbar-color: theme('colors.blue.300') white;
+    scrollbar-width: thin;
+  }
+}
