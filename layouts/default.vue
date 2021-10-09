@@ -12,9 +12,9 @@
     "
   >
     <TheNavbar class="absolute inset-x-0 lg:px-16 md:px-8 px-4 md:py-6 py-4" />
-    <TheLeftbar />
+    <TheLeftbar class="hidden md:flex" />
 
-    <div class="ml-12 mt-14 md:mt-[4.5rem] overflow-y-auto">
+    <div class="md:ml-12 mt-14 md:mt-[4.5rem] overflow-y-auto">
       <Nuxt />
 
       <TheFooter class="mt-12" />
