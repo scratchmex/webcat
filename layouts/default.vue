@@ -11,11 +11,13 @@
       overflow-hidden
     "
   >
-    <TheNavbar class="lg:px-16 md:px-8 px-4 md:py-6 py-4" />
+    <TheNavbar class="absolute inset-x-0 lg:px-16 md:px-8 px-4 md:py-6 py-4" />
     <TheLeftbar />
 
-    <div class="ml-12 overflow-y-auto">
+    <div class="ml-12 mt-14 md:mt-[4.5rem] overflow-y-auto">
       <Nuxt />
+
+      <TheFooter class="mt-12" />
     </div>
   </div>
 </template>
@@ -24,6 +26,7 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 import TheNavbar from '~/components/global/TheNavbar.vue'
 import TheLeftbar from '~/components/global/TheLeftbar.vue'
+import TheFooter from '~/components/global/TheFooter.vue'
 
 export default defineComponent({
   head: {
