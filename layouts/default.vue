@@ -11,12 +11,17 @@
       overflow-hidden
     "
   >
-    <TheNavbar class="absolute inset-x-0 md:px-8 px-4 md:py-6 py-4" />
+    <TheNavbar
+      class="absolute inset-x-0 md:px-8 px-4 md:py-6 py-4"
+      :scrollDirection="scrollDirection"
+    />
     <TheLeftbar class="hidden md:flex" />
 
-    <div class="md:ml-12 mt-14 md:mt-[4.5rem] overflow-y-auto scrollbar">
+    <div
+      ref="content"
+      class="md:pl-12 pt-14 md:pt-[4.5rem] overflow-y-auto scrollbar"
+    >
       <Nuxt />
-
       <TheFooter class="mt-12" />
     </div>
   </div>
@@ -24,15 +29,26 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
+import { ref, onMounted } from '@vue/composition-api'
 import TheNavbar from '~/components/global/TheNavbar.vue'
 import TheLeftbar from '~/components/global/TheLeftbar.vue'
 import TheFooter from '~/components/global/TheFooter.vue'
+import useScrollDirection from '~/utils/useScrollDirection'
 
 export default defineComponent({
   head: {
     bodyAttrs: {
       class: 'bg-black',
     },
+  },
+  setup() {
+    const content = ref()
+    const scrollDirection = useScrollDirection(content)
+
+    return {
+      content,
+      scrollDirection,
+    }
   },
 })
 </script>

@@ -1,5 +1,8 @@
 <template>
-  <nav class="bg-red-100 flex justify-between">
+  <nav
+    class="bg-red-100 flex justify-between z-50 transition-transform"
+    :class="[{ '-translate-y-full': scrollDirection === 'down' }]"
+  >
     <nuxt-link to="/" v-slot="{ isExactActive, href, navigate }" custom>
       <a :href="href" @click="navigate">
         <span class="group font-medium">
@@ -26,3 +29,13 @@
     </div>
   </nav>
 </template>
+
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  props: {
+    scrollDirection: String,
+  },
+})
+</script>
