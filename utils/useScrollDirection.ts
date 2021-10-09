@@ -12,15 +12,10 @@ export default function useScrollDirection(welement: Ref<HTMLElement>) {
     function updateScrollDir() {
       let st = window.pageYOffset || element.scrollTop
 
-      if (st > lastScrollTop) {
-        // downscroll code
-        scrollDirection.value = 'down'
-        console.log('down')
-      } else {
-        // upscroll code
-        scrollDirection.value = 'up'
-        console.log('up')
-      }
+      // downscroll code
+      if (st > lastScrollTop) scrollDirection.value = 'down'
+      // upscroll code
+      else if (st < lastScrollTop) scrollDirection.value = 'up'
 
       lastScrollTop = st <= 0 ? 0 : st // For Mobile or negative scrolling
       ticking = false
