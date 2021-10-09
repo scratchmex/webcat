@@ -23,7 +23,7 @@
         <IconLinkedin class="w-6" />
       </a>
     </li>
-    <VerticalLine />
+    <VerticalLine :class="[{ hidden: orientation === 'horizontal' }]" />
   </ul>
 </template>
 
