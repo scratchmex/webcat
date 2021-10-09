@@ -3,13 +3,13 @@
     <nuxt-link to="/" v-slot="{ isExactActive, href, navigate }" custom>
       <a :href="href" @click="navigate">
         <span class="group font-medium">
-          <span class="text-green-500 group-hover:text-green-400"
+          <span class="text-green-500 group-hover:text-green-600"
             >~{{ isExactActive ? ':' : '' }}{</span
           ><span
-            class="text-gray-700 group-hover:text-gray-500"
+            class="text-gray-700 hover:underline"
             :class="{ underlines: isExactActive }"
             >ivan gonzalez</span
-          ><span class="text-green-500 group-hover:text-green-400">}</span>
+          ><span class="text-green-500 group-hover:text-green-600">}</span>
         </span>
       </a>
     </nuxt-link>
@@ -18,7 +18,7 @@
         <a
           :href="href"
           @click="navigate"
-          class="ml-8 text-gray-700 hover:text-gray-500"
+          class="ml-8 text-gray-700 hover:text-green-500 hover:underline"
           :class="{ underline: isExactActive }"
           >blog</a
         >
