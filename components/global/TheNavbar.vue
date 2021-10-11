@@ -1,6 +1,16 @@
 <template>
   <nav
-    class="bg-red-100 flex justify-between z-50 transition-transform"
+    class="
+      bg-red-100
+      flex
+      justify-between
+      z-50
+      transition-transform
+      text-sm
+      md:text-base
+      lg:text-lg
+      xl:text-xl
+    "
     :class="[{ '-translate-y-full': scrollDirection === 'down' }]"
   >
     <nuxt-link to="/" v-slot="{ isExactActive, href, navigate }" custom>
