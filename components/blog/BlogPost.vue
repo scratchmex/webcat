@@ -1,10 +1,23 @@
 <template>
-  <div class="bg-green-100 md:mt-8 mt-4">
-    <div class="text-sm text-right">{{ post.date }}</div>
-    <h1 class="font-semibold">{{ post.title }}</h1>
-    <p class="mt-4 text-justify">{{ post.text }}</p>
+  <article
+    class="
+      bg-green-100
+      md:mt-8
+      mt-4
+      prose prose-sm
+      md:prose
+      lg:prose-lg
+      xl:prose-xl
+      mx-auto
+    "
+  >
+    <div class="text-right">
+      <time>{{ post.date }}</time>
+    </div>
+    <h1>{{ post.title }}</h1>
+    <nuxt-content class="text-justify" :document="post" />
     <div class="mt-2">- ivan ♥</div>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">

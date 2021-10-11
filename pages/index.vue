@@ -1,7 +1,7 @@
 <template>
-  <div class="md:mx-8 mx-4">
+  <main class="md:mx-8 mx-4">
     <Me />
-  </div>
+  </main>
 </template>
 
 <style scoped>
