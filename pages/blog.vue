@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="px-4 sm:px-0">
     <BlogPost
       v-for="blogpost in blogposts"
       :post="blogpost"

@@ -20,7 +20,7 @@
 
     <div
       ref="content"
-      class="md:pl-12 pt-14 md:pt-[4.5rem] overflow-y-auto scrollbar"
+      class="md:pl-12 pt-[3.25rem] md:pt-[4.5rem] overflow-y-auto scrollbar"
     >
       <Nuxt />
       <TheFooter class="mt-12" />
