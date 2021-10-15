@@ -1,19 +1,30 @@
-import { onMounted, ref, Ref } from '@vue/composition-api'
+import {
+  onMounted,
+  ref,
+  Ref,
+  ComponentPublicInstance,
+} from '@vue/composition-api'
 
-export default function useScrollDirection(welement: Ref<HTMLElement>) {
+export default function useScrollDirection(
+  wnavbar: Ref<ComponentPublicInstance>,
+  wcontent: Ref<HTMLElement>
+) {
   const scrollDirection = ref<'up' | 'down'>()
 
   onMounted(() => {
-    const element = welement.value
+    const content = wcontent.value
+    const navbar: HTMLElement = wnavbar.value.$el
 
-    let lastScrollTop = window.pageYOffset || element.scrollTop
+    let lastScrollTop = window.pageYOffset || content.scrollTop
     let ticking = false
 
     function updateScrollDir() {
-      let st = window.pageYOffset || element.scrollTop
+      let st = window.pageYOffset || content.scrollTop
 
+      // navbar offset
+      if (st <= navbar.offsetHeight) scrollDirection.value = undefined
       // downscroll code
-      if (st > lastScrollTop) scrollDirection.value = 'down'
+      else if (st > lastScrollTop) scrollDirection.value = 'down'
       // upscroll code
       else if (st < lastScrollTop) scrollDirection.value = 'up'
 
@@ -30,7 +41,7 @@ export default function useScrollDirection(welement: Ref<HTMLElement>) {
 
     // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
     // or window.addEventListener("scroll"....
-    element.addEventListener('scroll', handleScroll, false)
+    content.addEventListener('scroll', handleScroll, false)
   })
 
   return scrollDirection

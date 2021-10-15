@@ -12,6 +12,7 @@
     "
   >
     <TheNavbar
+      ref="navbar"
       class="absolute inset-x-0 md:px-8 px-4 md:py-6 py-4"
       :scrollDirection="scrollDirection"
     />
@@ -43,10 +44,12 @@ export default defineComponent({
   },
   setup() {
     const content = ref()
-    const scrollDirection = useScrollDirection(content)
+    const navbar = ref()
+    const scrollDirection = useScrollDirection(navbar, content)
 
     return {
       content,
+      navbar,
       scrollDirection,
     }
   },
