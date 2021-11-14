@@ -55,7 +55,9 @@ const config: NuxtConfig = {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true, // CSS will be extracted into separate files
+  },
 }
 
 export default config
