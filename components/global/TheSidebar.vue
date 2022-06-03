@@ -8,11 +8,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@nuxtjs/composition-api'
 
-export default defineComponent({
+export default defineNuxtComponent({
   props: {
-    side: { type: String as PropType<'left' | 'right'>, required: true },
+    side: { type: String as () => 'left' | 'right', required: true },
   },
 })
 </script>

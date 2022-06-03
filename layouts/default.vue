@@ -22,15 +22,14 @@
       ref="content"
       class="md:pl-12 pt-[3.25rem] md:pt-[4.5rem] overflow-y-auto scrollbar"
     >
-      <Nuxt />
+      <slot />
       <TheFooter class="mt-12" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import { ref, onMounted } from '@vue/composition-api'
+import { ref, onMounted } from 'vue'
 import TheNavbar from '~/components/global/TheNavbar.vue'
 import TheLeftbar from '~/components/global/TheLeftbar.vue'
 import TheFooter from '~/components/global/TheFooter.vue'

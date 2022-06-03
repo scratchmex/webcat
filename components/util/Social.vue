@@ -28,12 +28,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@nuxtjs/composition-api'
-
-export default defineComponent({
+export default defineNuxtComponent({
   props: {
     orientation: {
-      type: String as PropType<'vertical' | 'horizontal'>,
+      type: String as () => 'vertical' | 'horizontal',
       required: true,
     },
   },

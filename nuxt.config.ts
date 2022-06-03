@@ -1,6 +1,6 @@
-import { NuxtConfig } from '@nuxt/types'
+import { defineNuxtConfig } from 'nuxt'
 
-const config: NuxtConfig = {
+export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -40,9 +40,7 @@ const config: NuxtConfig = {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxt/typescript-build', // https://go.nuxtjs.dev/typescript
     '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
-    '@nuxtjs/composition-api/module', // https://composition-api.nuxtjs.org
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,13 +49,11 @@ const config: NuxtConfig = {
     '@nuxt/content',
   ],
 
-  // Content module configuration: https://go.nuxtjs.dev/config-content
+  // Content module configuration: // https://content.nuxtjs.org/api/configuration
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: true, // CSS will be extracted into separate files
   },
-}
-
-export default config
+})

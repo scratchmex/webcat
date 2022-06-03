@@ -3,7 +3,7 @@ import {
   ref,
   Ref,
   ComponentPublicInstance,
-} from '@vue/composition-api'
+} from 'vue'
 
 export default function useScrollDirection(
   wnavbar: Ref<ComponentPublicInstance>,

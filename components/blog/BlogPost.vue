@@ -12,22 +12,20 @@
     "
   >
     <div class="text-right">
-      <time>{{ post.date }}</time>
+      <time>{{ data.date }}</time>
     </div>
-    <h1>{{ post.title }}</h1>
-    <nuxt-content class="text-justify" :document="post" />
+    <h1>{{ data.title }}</h1>
+    <ContentRenderer class="text-justify" :value="data" />
     <div class="mt-2">- ivan ♥</div>
   </article>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@nuxtjs/composition-api'
-
 import { BlogPostType } from '~/entity/blogpost'
 
-export default defineComponent({
+export default defineNuxtComponent({
   props: {
-    post: { type: Object as PropType<BlogPostType>, required: true },
+    data: { type: Object as () => BlogPostType, required: true },
   },
 })
 </script>
