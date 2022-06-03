@@ -28,12 +28,9 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  orientation: {
-    type: String as () => 'vertical' | 'horizontal',
-    required: true,
-  },
-})
+const props = defineProps<{
+  orientation: 'vertical' | 'horizontal'
+}>()
 </script>
 
 <style scoped>

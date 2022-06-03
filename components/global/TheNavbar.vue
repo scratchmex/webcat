@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  scrollDirection: String,
-})
+const props = defineProps<{
+  scrollDirection: string,
+}>()
 </script>

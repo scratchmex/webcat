@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  side: { type: String as () => 'left' | 'right', required: true },
-})
+const props = defineProps<{
+  side: 'left' | 'right'
+}>()
 </script>

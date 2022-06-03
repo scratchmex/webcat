@@ -23,10 +23,7 @@
 <script setup lang="ts">
 import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
-const props = defineProps({
-  data: {
-    type: Object as () => ParsedContent,
-    required: true,
-  },
-})
+const props = defineProps<{
+  data: ParsedContent,
+}>()
 </script>
