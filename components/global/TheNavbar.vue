@@ -40,10 +40,8 @@
   </nav>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  props: {
-    scrollDirection: String,
-  },
+<script setup lang="ts">
+const props = defineProps({
+  scrollDirection: String,
 })
 </script>

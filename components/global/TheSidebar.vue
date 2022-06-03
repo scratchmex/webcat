@@ -7,11 +7,8 @@
   </aside>
 </template>
 
-<script lang="ts">
-
-export default defineNuxtComponent({
-  props: {
-    side: { type: String as () => 'left' | 'right', required: true },
-  },
+<script setup lang="ts">
+const props = defineProps({
+  side: { type: String as () => 'left' | 'right', required: true },
 })
 </script>

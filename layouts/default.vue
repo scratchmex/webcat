@@ -28,29 +28,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, onMounted } from 'vue'
-import TheNavbar from '~/components/global/TheNavbar.vue'
-import TheLeftbar from '~/components/global/TheLeftbar.vue'
-import TheFooter from '~/components/global/TheFooter.vue'
+<script setup lang="ts">
 import useScrollDirection from '~/utils/useScrollDirection'
 
-export default defineComponent({
-  head: {
-    bodyAttrs: {
-      class: 'bg-black',
-    },
-  },
-  setup() {
-    const content = ref()
-    const navbar = ref()
-    const scrollDirection = useScrollDirection(navbar, content)
-
-    return {
-      content,
-      navbar,
-      scrollDirection,
-    }
-  },
-})
+const content = ref()
+const navbar = ref()
+const scrollDirection = useScrollDirection(navbar, content)
 </script>
+
+<style>
+body {
+  @apply bg-black;
+}
+</style>

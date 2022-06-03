@@ -20,12 +20,13 @@
   </article>
 </template>
 
-<script lang="ts">
-import { BlogPostType } from '~/entity/blogpost'
+<script setup lang="ts">
+import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
-export default defineNuxtComponent({
-  props: {
-    data: { type: Object as () => BlogPostType, required: true },
+const props = defineProps({
+  data: {
+    type: Object as () => ParsedContent,
+    required: true,
   },
 })
 </script>

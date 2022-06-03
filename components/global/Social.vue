@@ -27,13 +27,11 @@
   </ul>
 </template>
 
-<script lang="ts">
-export default defineNuxtComponent({
-  props: {
-    orientation: {
-      type: String as () => 'vertical' | 'horizontal',
-      required: true,
-    },
+<script setup lang="ts">
+const props = defineProps({
+  orientation: {
+    type: String as () => 'vertical' | 'horizontal',
+    required: true,
   },
 })
 </script>
