@@ -9,7 +9,7 @@ export default function useScrollDirection(
   wnavbar: Ref<ComponentPublicInstance>,
   wcontent: Ref<HTMLElement>
 ) {
-  const scrollDirection = ref<'up' | 'down'>()
+  const scrollDirection = ref<'up' | 'down'>("up")
 
   onMounted(() => {
     const content = wcontent.value
