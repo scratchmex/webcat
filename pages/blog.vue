@@ -1,6 +1,6 @@
 <template>
-  <main class="px-4 sm:px-0">
-    <BlogPost v-for="dat in data" :data="dat" :key="dat.id" />
+  <main class="p-4 sm:p-0">
+    <BlogPost v-for="dat in data" :key="dat.id" :data="dat" />
   </main>
 </template>
 
