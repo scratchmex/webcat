@@ -1,9 +1,9 @@
 <template>
   <div
-    class="bg-red-200 h-screen v-screen border-4 border-black rounded-xl overflow-hidden grid grid-flow-col grid-cols-4"
+    class="bg-red-200 h-screen v-screen border-4 border-black rounded-xl overflow-hidden lg:grid lg:grid-flow-col lg:grid-cols-12"
   >
-    <TheNavbar />
-    <NuxtPage class="col-span-3 bg-green-200 overflow-y-auto scrollbar" />
+    <TheNavbar class="lg:col-span-2" />
+    <NuxtPage class="lg:col-span-10 bg-green-200 overflow-y-auto scrollbar" />
   </div>
 </template>
 
