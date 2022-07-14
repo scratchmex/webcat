@@ -7,7 +7,7 @@ import IconStackoverflow from '../icon/IconStackoverflow.vue'
 //   scrollDirection: string
 // }>()
 
-const links = ref(['blog', 'proyectos'])
+const links = ref(['blog'])
 
 interface SocialLink {
   component: Component
