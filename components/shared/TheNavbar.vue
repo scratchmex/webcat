@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Component, ref } from 'vue'
+import { ref } from 'vue'
 import IconGithub from '../icon/IconGithub.vue'
 import IconLinkedin from '../icon/IconLinkedin.vue'
 import IconStackoverflow from '../icon/IconStackoverflow.vue'
@@ -10,7 +10,7 @@ import IconStackoverflow from '../icon/IconStackoverflow.vue'
 const links = ref(['blog'])
 
 interface SocialLink {
-  component: Component
+  component // Component
   href: string
 }
 const icons: SocialLink[] = [
