@@ -66,15 +66,17 @@ const icons: SocialLink[] = [
     </ol>
 
     <!-- social -->
-    <ol class="h-[calc(100vh/12)] bg-gray-100 flex">
+    <ol
+      class="h-[calc(100vh/12)] flex bg-gray-700 border-gray-700 gap-1 border-y-[0.25rem] lg:border-b-0"
+    >
       <a
         v-for="(item, i) in icons"
         :key="i"
-        class="grow icon-on-hover inline-flex items-center justify-center"
+        class="grow inline-flex items-center justify-center bg-gray-100 group"
         :href="item.href"
         target="_blank"
       >
-        <component :is="item.component" class="w-8" />
+        <component :is="item.component" class="w-8 icon-on-hover" />
       </a>
     </ol>
   </nav>
@@ -82,9 +84,9 @@ const icons: SocialLink[] = [
 
 <style scoped>
 .icon-on-hover {
-  @apply transform hover:-translate-y-1;
+  @apply transform group-hover:-translate-y-1;
   @apply transition-transform duration-200 ease-in;
-  @apply hover:text-green-500;
+  @apply group-hover:text-green-500;
   @apply text-gray-700;
 }
 </style>
