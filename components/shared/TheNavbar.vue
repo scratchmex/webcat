@@ -30,12 +30,12 @@ const icons: SocialLink[] = [
 </script>
 
 <template>
-  <nav class="bg-purple-200 flex flex-col">
+  <nav class="bg-purple-200 flex flex-col lg:border-r-4 border-gray-700">
     <!-- logo -->
     <nuxt-link
       to="/"
       v-slot="{ isExactActive }"
-      class="bg-yellow-200 h-[calc(2*100vh/12)] flex items-center text-6xl px-4 group"
+      class="bg-yellow-200 h-[calc(2*100vh/12)] flex items-center text-6xl px-4 group border-b-4 border-gray-700"
     >
       <span
         class="text-green-500 group-hover:text-green-600"
@@ -55,7 +55,7 @@ const icons: SocialLink[] = [
         :key="link"
         :to="`/${link}`"
         v-slot="{ isExactActive }"
-        class="h-[calc(100vh/12)] flex bg-gray-100 items-center px-4 group"
+        class="h-[calc(100vh/12)] flex bg-gray-100 items-center px-4 group border-b-4 border-gray-700"
       >
         <span
           class="text-gray-700 group-hover:text-green-500 group-hover:underline"
@@ -67,7 +67,7 @@ const icons: SocialLink[] = [
 
     <!-- social -->
     <ol
-      class="h-[calc(100vh/12)] flex bg-gray-700 border-gray-700 gap-1 border-y-[0.25rem] lg:border-b-0"
+      class="h-[calc(100vh/12)] flex bg-gray-700 border-gray-700 gap-1 border-b-4 lg:border-t-4 lg:border-b-0"
     >
       <a
         v-for="(item, i) in icons"
@@ -85,7 +85,7 @@ const icons: SocialLink[] = [
 <style scoped>
 .icon-on-hover {
   @apply transform group-hover:-translate-y-1;
-  @apply transition-transform duration-200 ease-in;
+  @apply transition-transform duration-1000 ease-out;
   @apply group-hover:text-green-500;
   @apply text-gray-700;
 }
