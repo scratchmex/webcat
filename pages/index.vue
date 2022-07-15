@@ -14,11 +14,13 @@ const { data } = await useAsyncData('home', () =>
       </span>
     </div>
     <div class="grow shrink-0 mb-8 lg:my-auto lg:ml-8">
-      <img
-        class="object-none"
-        src="https://via.placeholder.com/300"
-        alt="foto"
-      />
+      <Card direction="in">
+        <img
+          class="object-none"
+          src="https://via.placeholder.com/300"
+          alt="foto"
+        />
+      </Card>
     </div>
   </main>
 </template>
