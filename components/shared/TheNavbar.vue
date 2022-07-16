@@ -27,26 +27,47 @@ const icons: SocialLink[] = [
     href: 'https://stackoverflow.com/users/6697020/ivan-gonzalez',
   },
 ]
+
+const navbar_mobile_dropdown = ref<HTMLElement>()
+const mobile_top_bar = ref<HTMLElement>()
+
+const menu_expanded = ref(false)
+const toggleMenuStatus = () => (menu_expanded.value = !menu_expanded.value)
+const closeMenu = () => (menu_expanded.value = false)
+watch(menu_expanded, () => {
+  navbar_mobile_dropdown.value.style.height = menu_expanded.value
+    ? navbar_mobile_dropdown.value.scrollHeight.toString() + 'px'
+    : '0px'
+})
+onMounted(() => {
+  // collapse dropdown menu if js is enabled
+  navbar_mobile_dropdown.value.style.height = '0px'
+})
 </script>
 
 <template>
-  <nav class="bg-purple-200 flex flex-col lg:border-r-2 border-gray-700">
-    <!-- logo -->
-    <nuxt-link
-      to="/"
-      v-slot="{ isExactActive }"
-      class="bg-yellow-200 h-[calc(100vh/12)] lg:h-[calc(2*100vh/12)] flex items-center text-6xl px-2 group border-b-2 border-gray-700"
+  <!-- desktop navbar -->
+  <nav
+    :="$attrs"
+    class="bg-purple-200 hidden lg:flex flex-col border-r-2 border-gray-700"
+  >
+    <!-- top bar (logo) -->
+    <div
+      class="bg-yellow-200 h-[calc(2*100vh/12)] flex items-center justify-between px-2 border-b-2 border-gray-700"
     >
-      <span
-        class="text-green-500 group-hover:text-green-600"
-        v-show="isExactActive"
-        >~</span
-      ><span
-        class="text-gray-700 group-hover:underline"
-        :class="{ underlines: isExactActive }"
-        >ig</span
-      >
-    </nuxt-link>
+      <!-- logo -->
+      <nuxt-link to="/" v-slot="{ isExactActive }" class="text-6xl group">
+        <span
+          class="text-green-500 group-hover:text-green-600"
+          v-show="isExactActive"
+          >~</span
+        ><span
+          class="text-gray-700 group-hover:underline"
+          :class="{ underlines: isExactActive }"
+          >ig</span
+        >
+      </nuxt-link>
+    </div>
 
     <!-- sections -->
     <ol class="grow flex flex-col">
@@ -55,7 +76,7 @@ const icons: SocialLink[] = [
         :key="link"
         :to="`/${link}`"
         v-slot="{ isExactActive }"
-        class="h-[calc(0.5*100vh/12)] lg:h-[calc(100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
+        class="h-[calc(100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
       >
         <span
           class="text-gray-700 group-hover:text-green-500 group-hover:underline"
@@ -66,7 +87,7 @@ const icons: SocialLink[] = [
     </ol>
 
     <!-- social -->
-    <ol class="h-[calc(0.5*100vh/12)] lg:h-[calc(100vh/12)] flex bg-gray-700 border-gray-700">
+    <ol class="h-[calc(100vh/12)] flex bg-gray-700 border-gray-700">
       <a
         v-for="(item, i) in icons"
         :key="i"
@@ -77,6 +98,82 @@ const icons: SocialLink[] = [
         <component :is="item.component" class="w-6" />
       </a>
     </ol>
+  </nav>
+
+  <!-- mobile navbar -->
+  <nav :="$attrs" class="bg-purple-200 flex lg:hidden flex-col border-gray-700">
+    <!-- top bar (logo) -->
+    <div
+      ref="mobile_top_bar"
+      class="bg-yellow-200 h-[calc(100vh/12)] flex items-center justify-between px-2 border-b-2 border-gray-700"
+    >
+      <!-- logo -->
+      <nuxt-link
+        @click="closeMenu"
+        to="/"
+        v-slot="{ isExactActive }"
+        class="text-5xl group"
+      >
+        <span
+          class="text-green-500 group-hover:text-green-600"
+          v-show="isExactActive"
+          >~</span
+        ><span
+          class="text-gray-700 group-hover:underline"
+          :class="{ underlines: isExactActive }"
+          >ig</span
+        >
+      </nuxt-link>
+
+      <!-- hamburger menu -->
+      <div class="p-4 cursor-pointer" @click="toggleMenuStatus">
+        <div
+          class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
+          :class="{ 'rotate-45 translate-y-[5px]': menu_expanded }"
+        ></div>
+        <div
+          class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
+          :class="{ '-rotate-45 -translate-y-[5px]': menu_expanded }"
+        ></div>
+      </div>
+    </div>
+
+    <!-- dropdown bar -->
+    <div
+      ref="navbar_mobile_dropdown"
+      class="bg-gray-100 h-0x overflow-hidden transition-[max-height,height]"
+    >
+      <!-- sections -->
+      <ol class="grow flex flex-col">
+        <nuxt-link
+          @click="closeMenu"
+          v-for="link in links"
+          :key="link"
+          :to="`/${link}`"
+          v-slot="{ isExactActive }"
+          class="h-[calc(0.5*100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
+        >
+          <span
+            class="text-gray-700 group-hover:text-green-500 group-hover:underline"
+            :class="{ underline: isExactActive }"
+            >{{ link }}</span
+          >
+        </nuxt-link>
+      </ol>
+
+      <!-- social -->
+      <ol class="h-[calc(0.5*100vh/12)] flex bg-gray-700 border-gray-700">
+        <a
+          v-for="(item, i) in icons"
+          :key="i"
+          class="grow inline-flex items-center justify-center bg-gray-100 text-gray-700 button-grid pop-out-shadow"
+          :href="item.href"
+          target="_blank"
+        >
+          <component :is="item.component" class="w-5" />
+        </a>
+      </ol>
+    </div>
   </nav>
 </template>
 
