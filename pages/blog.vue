@@ -21,7 +21,7 @@ data.value = data.value.concat(data.value).concat(data.value).concat(data.value)
         alt="foto"
       />
       <div
-        class="bg-blue-400 absolute inset-x-0 bottom-0 px-1 bg-opacity-60 max-h-full overflow-hidden border-y-2 border-current text-gray-700"
+        class="bg-blue-400 absolute inset-x-0 bottom-0 px-1 bg-opacity-60 max-h-full overflow-hidden border-t-2 border-current text-gray-700"
       >
         <!-- overflow-hidden transition-all h-auto max-h-0 group-hover:max-h-screen ease-in-out duration-200 -->
         <!-- inset-x-0 bottom-0 overflow-hidden transition-all h-0 group-hover:h-1/2 -->
