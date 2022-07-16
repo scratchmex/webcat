@@ -35,7 +35,7 @@ const icons: SocialLink[] = [
     <nuxt-link
       to="/"
       v-slot="{ isExactActive }"
-      class="bg-yellow-200 h-[calc(2*100vh/12)] flex items-center text-6xl px-2 group border-b-2 border-gray-700"
+      class="bg-yellow-200 h-[calc(100vh/12)] lg:h-[calc(2*100vh/12)] flex items-center text-6xl px-2 group border-b-2 border-gray-700"
     >
       <span
         class="text-green-500 group-hover:text-green-600"
@@ -55,7 +55,7 @@ const icons: SocialLink[] = [
         :key="link"
         :to="`/${link}`"
         v-slot="{ isExactActive }"
-        class="h-[calc(100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
+        class="h-[calc(0.5*100vh/12)] lg:h-[calc(100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
       >
         <span
           class="text-gray-700 group-hover:text-green-500 group-hover:underline"
@@ -66,7 +66,7 @@ const icons: SocialLink[] = [
     </ol>
 
     <!-- social -->
-    <ol class="h-[calc(100vh/12)] flex bg-gray-700 border-gray-700">
+    <ol class="h-[calc(0.5*100vh/12)] lg:h-[calc(100vh/12)] flex bg-gray-700 border-gray-700">
       <a
         v-for="(item, i) in icons"
         :key="i"
