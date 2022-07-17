@@ -5,39 +5,47 @@ const { data } = await useAsyncData('home', () =>
   queryContent().where({ _path: '/' }).findOne()
 )
 
-async function slide(el: Ref<HTMLElement>) {
-  el.value?.classList.add('duration-[15000ms]')
-  let cls = ['-translate-x-full']
+async function initSlide(el: Ref<HTMLElement>) {
+  let right = true
+  let timeoutid
 
-  while (el.value != undefined) {
-    console.log('sliding')
+  const toggle = () => {
+    el.value.style.transform = right
+      ? 'translateX(calc(-100% + 100vw))'
+      : 'translateX(0)'
 
-    el.value.classList.add(...cls)
-    await new Promise((r) => setTimeout(r, 15000 + 200))
+    // console.log(el.value.style.transform)
+    right = !right
 
-    el.value.classList.remove(...cls)
-    await new Promise((r) => setTimeout(r, 15000 + 200))
+    timeoutid = setTimeout(() => toggle(), 15000 + 100)
   }
+
+  onMounted(() => {
+    el.value.classList.add('duration-[15000ms]')
+
+    setTimeout(() => toggle(), 10)
+  })
+
+  onUnmounted(() => {
+    clearTimeout(timeoutid)
+  })
 }
 
 const looping_text_container = ref<HTMLElement>()
-onMounted(() => {
-  slide(looping_text_container)
-})
+initSlide(looping_text_container)
 </script>
 
 <template>
   <main>
     <!-- sliding title -->
     <div
-      class="h-[calc(100vh/12)] lg:h-[calc(2*100vh/12)] bg-blue-300 overflow-hidden py-2 flex items-center border-b-2 border-gray-700"
+      class="h-[calc(100vh/12)] lg:h-[calc(2*100vh/12)] bg-blue-300 py-2 flex items-center border-b-2 border-gray-700"
     >
       <div
         ref="looping_text_container"
-        class="flex transition-transform ease-linear"
+        class="shrink-0 flex transition-transform ease-linear"
       >
-        <!-- TODO: translate-x-full no mueve completamente el contenedor, lo deja a la mitad. En gumroad.com no pasa. -->
-        <div v-for="i in 2" class="text-4xl lg:text-8xl shrink-0">
+        <div v-for="i in 2" class="text-4xl lg:text-8xl">
           <span class="mr-8">•</span>
           <span class="mr-8">Aló, me llamo Ivan González</span>
         </div>
