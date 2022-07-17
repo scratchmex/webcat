@@ -123,9 +123,10 @@ watch(
     <!-- top bar (logo) -->
     <div
       ref="mobile_navbar"
-      class="bg-yellow-200 overflow-hidden transition-[max-height,height]"
+      class="bg-yellow-200 overflow-hidden transition-[max-height,height] border-b-2 border-gray-700"
     >
-      <div class="flex items-center justify-between border-b-2 border-gray-700">
+      <!-- this extra div is to fix an error for using height collapse with a flex box -->
+      <div class="flex items-center justify-between">
         <!-- logo -->
         <nuxt-link
           @click="closeMenu"
