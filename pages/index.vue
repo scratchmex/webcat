@@ -14,7 +14,6 @@ async function initSlide(el: Ref<HTMLElement>) {
       ? 'translateX(calc(-100% + 100vw))'
       : 'translateX(0)'
 
-    // console.log(el.value.style.transform)
     right = !right
 
     timeoutid = setTimeout(() => toggle(), 15000 + 100)

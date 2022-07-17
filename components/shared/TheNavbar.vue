@@ -45,18 +45,20 @@ const {
   default_state: false,
 })
 
-const {
-  close: hideNavbar,
-  open: showNavbar,
-} = useCollapsibleMaxHeight(mobile_navbar, {
-  default_state: true,
-})
+const { close: hideNavbar, open: showNavbar } = useCollapsibleHeight(
+  mobile_navbar,
+  {
+    default_state: true,
+  }
+)
 
 watch(
   () => props.scrollDirection,
   () => {
-    if (props.scrollDirection == ScrollDirection.down) hideNavbar()
-    else if (props.scrollDirection == ScrollDirection.up) showNavbar()
+    if (props.scrollDirection == ScrollDirection.down) {
+      hideNavbar()
+      closeMenu()
+    } else if (props.scrollDirection == ScrollDirection.up) showNavbar()
   }
 )
 </script>
@@ -65,7 +67,7 @@ watch(
   <!-- desktop navbar -->
   <nav
     :="$attrs"
-    class="bg-purple-200 hidden lg:flex flex-col border-r-2 border-gray-700"
+    class="bg-purple-200 hidden lg:flex w-1/5 shrink-0 flex-col border-r-2 border-gray-700"
   >
     <!-- top bar (logo) -->
     <div
@@ -117,43 +119,42 @@ watch(
   </nav>
 
   <!-- mobile navbar -->
-  <nav
-    :="$attrs"
-    ref="mobile_navbar"
-    class="bg-purple-200 flex lg:hidden flex-col border-gray-700 overflow-hidden transition-[max-height,height] duration-500 ease-in"
-  >
+  <nav :="$attrs" class="flex lg:hidden flex-col">
     <!-- top bar (logo) -->
     <div
-      class="bg-yellow-200 h-[calc(100vh/12)] flex items-center justify-between border-b-2 border-gray-700"
+      ref="mobile_navbar"
+      class="bg-yellow-200 overflow-hidden transition-[max-height,height]"
     >
-      <!-- logo -->
-      <nuxt-link
-        @click="closeMenu"
-        to="/"
-        v-slot="{ isExactActive }"
-        class="text-5xl group grow p-2"
-      >
-        <span
-          class="text-green-500 group-hover:text-green-600"
-          v-show="isExactActive"
-          >~</span
-        ><span
-          class="text-gray-700 group-hover:underline"
-          :class="{ underlines: isExactActive }"
-          >ig</span
+      <div class="flex items-center justify-between border-b-2 border-gray-700">
+        <!-- logo -->
+        <nuxt-link
+          @click="closeMenu"
+          to="/"
+          v-slot="{ isExactActive }"
+          class="text-5xl group grow p-2"
         >
-      </nuxt-link>
+          <span
+            class="text-green-500 group-hover:text-green-600"
+            v-show="isExactActive"
+            >~</span
+          ><span
+            class="text-gray-700 group-hover:underline"
+            :class="{ underlines: isExactActive }"
+            >ig</span
+          >
+        </nuxt-link>
 
-      <!-- hamburger menu -->
-      <div class="p-4 mr-2 cursor-pointer" @click="toggleMenu">
-        <div
-          class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
-          :class="{ 'rotate-45 translate-y-[5px]': isMenuExpanded }"
-        ></div>
-        <div
-          class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
-          :class="{ '-rotate-45 -translate-y-[5px]': isMenuExpanded }"
-        ></div>
+        <!-- hamburger menu -->
+        <div class="p-4 mr-2 cursor-pointer" @click="toggleMenu">
+          <div
+            class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
+            :class="{ 'rotate-45 translate-y-[5px]': isMenuExpanded }"
+          ></div>
+          <div
+            class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
+            :class="{ '-rotate-45 -translate-y-[5px]': isMenuExpanded }"
+          ></div>
+        </div>
       </div>
     </div>
 

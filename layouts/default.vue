@@ -7,9 +7,9 @@ const scrollDirection = useScrollDirection(content)
 
 <template>
   <div
-    class="bg-red-200 h-screen v-screen border-4 border-black rounded-xl overflow-hidden flex flex-col lg:flex-row"
+    class="bg-red-200 h-screen v-screen border-4 border-black rounded-xl overflow-clip flex flex-col lg:flex-row"
   >
-    <TheNavbar :scrollDirection="scrollDirection" class="lg:w-1/5 shrink-0" />
+    <TheNavbar :scrollDirection="scrollDirection"/>
     <main ref="content" class="grow bg-green-200 overflow-y-auto scrollbar">
       <NuxtPage />
     </main>

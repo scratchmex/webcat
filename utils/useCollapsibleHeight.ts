@@ -15,7 +15,7 @@ export function useCollapsibleHeight(
       : '0px'
   })
 
-  // collapse if js is enabled
+  // collapse if js is enabled and default is false
   onMounted(() => (show.value = default_state))
 
   return {
