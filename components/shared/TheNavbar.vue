@@ -105,14 +105,14 @@ onMounted(() => {
     <!-- top bar (logo) -->
     <div
       ref="mobile_top_bar"
-      class="bg-yellow-200 h-[calc(100vh/12)] flex items-center justify-between px-2 border-b-2 border-gray-700"
+      class="bg-yellow-200 h-[calc(100vh/12)] flex items-center justify-between border-b-2 border-gray-700"
     >
       <!-- logo -->
       <nuxt-link
         @click="closeMenu"
         to="/"
         v-slot="{ isExactActive }"
-        class="text-5xl group"
+        class="text-5xl group grow p-2"
       >
         <span
           class="text-green-500 group-hover:text-green-600"
@@ -126,7 +126,7 @@ onMounted(() => {
       </nuxt-link>
 
       <!-- hamburger menu -->
-      <div class="p-4 cursor-pointer" @click="toggleMenuStatus">
+      <div class="p-4 mr-2 cursor-pointer" @click="toggleMenuStatus">
         <div
           class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
           :class="{ 'rotate-45 translate-y-[5px]': menu_expanded }"
@@ -141,7 +141,7 @@ onMounted(() => {
     <!-- dropdown bar -->
     <div
       ref="navbar_mobile_dropdown"
-      class="bg-gray-100 h-0x overflow-hidden transition-[max-height,height]"
+      class="bg-gray-100 overflow-hidden transition-[max-height,height]"
     >
       <!-- sections -->
       <ol class="grow flex flex-col">
