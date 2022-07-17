@@ -126,13 +126,13 @@ watch(
       class="bg-yellow-200 overflow-hidden transition-[max-height,height] border-b-2 border-gray-700"
     >
       <!-- this extra div is to fix an error for using height collapse with a flex box -->
-      <div class="flex items-center justify-between">
+      <div class="h-[calc(100vh/12)] flex items-center justify-between">
         <!-- logo -->
         <nuxt-link
           @click="closeMenu"
           to="/"
           v-slot="{ isExactActive }"
-          class="text-5xl group grow p-2"
+          class="text-4xl sm:text-5xl group grow p-2"
         >
           <span
             class="text-green-500 group-hover:text-green-600"
@@ -172,7 +172,7 @@ watch(
           :key="link"
           :to="`/${link}`"
           v-slot="{ isExactActive }"
-          class="h-[calc(0.5*100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
+          class="h-[calc(100vh/12)] flex bg-gray-100 items-center px-2 group border-b-2 border-gray-700"
         >
           <span
             class="text-gray-700 group-hover:text-green-500 group-hover:underline"
@@ -183,11 +183,11 @@ watch(
       </ol>
 
       <!-- social -->
-      <ol class="h-[calc(0.5*100vh/12)] flex bg-gray-700 border-gray-700">
+      <ol class="flex bg-gray-700 border-gray-700">
         <a
           v-for="(item, i) in icons"
           :key="i"
-          class="grow inline-flex items-center justify-center bg-gray-100 text-gray-700 button-grid pop-out-shadow"
+          class="h-[calc(100vh/12)] grow inline-flex items-center justify-center bg-gray-100 text-gray-700 button-grid pop-out-shadow"
           :href="item.href"
           target="_blank"
         >
