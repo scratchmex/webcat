@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import {
+  useCollapsibleHeight,
+  useCollapsibleMaxHeight,
+} from '~~/utils/useCollapsibleHeight'
+import { ScrollDirection } from '~~/utils/useScrollDirection'
 import IconGithub from '../icon/IconGithub.vue'
 import IconLinkedin from '../icon/IconLinkedin.vue'
 import IconStackoverflow from '../icon/IconStackoverflow.vue'
-// const props = defineProps<{
-//   scrollDirection: string
-// }>()
+
+const props = defineProps<{
+  scrollDirection: ScrollDirection
+}>()
 
 const links = ref(['blog'])
 
@@ -29,20 +35,30 @@ const icons: SocialLink[] = [
 ]
 
 const navbar_mobile_dropdown = ref<HTMLElement>()
-const mobile_top_bar = ref<HTMLElement>()
+const mobile_navbar = ref<HTMLElement>()
 
-const menu_expanded = ref(false)
-const toggleMenuStatus = () => (menu_expanded.value = !menu_expanded.value)
-const closeMenu = () => (menu_expanded.value = false)
-watch(menu_expanded, () => {
-  navbar_mobile_dropdown.value.style.height = menu_expanded.value
-    ? navbar_mobile_dropdown.value.scrollHeight.toString() + 'px'
-    : '0px'
+const {
+  show: isMenuExpanded,
+  toggle: toggleMenu,
+  close: closeMenu,
+} = useCollapsibleHeight(navbar_mobile_dropdown, {
+  default_state: false,
 })
-onMounted(() => {
-  // collapse dropdown menu if js is enabled
-  navbar_mobile_dropdown.value.style.height = '0px'
+
+const {
+  close: hideNavbar,
+  open: showNavbar,
+} = useCollapsibleMaxHeight(mobile_navbar, {
+  default_state: true,
 })
+
+watch(
+  () => props.scrollDirection,
+  () => {
+    if (props.scrollDirection == ScrollDirection.down) hideNavbar()
+    else if (props.scrollDirection == ScrollDirection.up) showNavbar()
+  }
+)
 </script>
 
 <template>
@@ -101,10 +117,13 @@ onMounted(() => {
   </nav>
 
   <!-- mobile navbar -->
-  <nav :="$attrs" class="bg-purple-200 flex lg:hidden flex-col border-gray-700">
+  <nav
+    :="$attrs"
+    ref="mobile_navbar"
+    class="bg-purple-200 flex lg:hidden flex-col border-gray-700 overflow-hidden transition-[max-height,height] duration-500 ease-in"
+  >
     <!-- top bar (logo) -->
     <div
-      ref="mobile_top_bar"
       class="bg-yellow-200 h-[calc(100vh/12)] flex items-center justify-between border-b-2 border-gray-700"
     >
       <!-- logo -->
@@ -126,14 +145,14 @@ onMounted(() => {
       </nuxt-link>
 
       <!-- hamburger menu -->
-      <div class="p-4 mr-2 cursor-pointer" @click="toggleMenuStatus">
+      <div class="p-4 mr-2 cursor-pointer" @click="toggleMenu">
         <div
           class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
-          :class="{ 'rotate-45 translate-y-[5px]': menu_expanded }"
+          :class="{ 'rotate-45 translate-y-[5px]': isMenuExpanded }"
         ></div>
         <div
           class="h-[2px] w-8 my-2 bg-gray-700 transition-transform"
-          :class="{ '-rotate-45 -translate-y-[5px]': menu_expanded }"
+          :class="{ '-rotate-45 -translate-y-[5px]': isMenuExpanded }"
         ></div>
       </div>
     </div>
