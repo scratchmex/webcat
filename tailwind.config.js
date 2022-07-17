@@ -1,11 +1,14 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: [],
   theme: {
     extend: {
+      gridTemplateRows: {
+        // Simple 12 row grid
+        12: 'repeat(12, minmax(0, 1fr))',
+      },
       fontFamily: {
-        sans: ['Fira Code', ...defaultTheme.fontFamily.sans],
+        sans: ['Fira Code', ...defaultTheme.fontFamily['sans']],
       },
     },
   },

@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
   },
 
-  components: ['~/components', '~/components/global'],
+  components: ['~/components', '~/components/shared'],
 
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
