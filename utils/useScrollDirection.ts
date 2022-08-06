@@ -1,34 +1,33 @@
-import {
-  onMounted,
-  ref,
-  Ref,
-  ComponentPublicInstance,
-} from 'vue'
+import { onMounted, ref, Ref } from 'vue'
 
-export default function useScrollDirection(
-  wnavbar: Ref<ComponentPublicInstance>,
-  wcontent: Ref<HTMLElement>
-) {
-  const scrollDirection = ref<'up' | 'down'>("up")
+export enum ScrollDirection {
+  up = 'up',
+  down = 'down',
+  undefined = 'undefined',
+}
+
+export default function useScrollDirection(content: Ref<HTMLElement>) {
+  const scrollDirection = ref<ScrollDirection>(ScrollDirection.undefined)
+
+  const getScrolled = () => window.scrollY || content.value.scrollTop
 
   onMounted(() => {
-    const content = wcontent.value
-    const navbar: HTMLElement = wnavbar.value.$el
-
-    let lastScrollTop = window.pageYOffset || content.scrollTop
+    let lastScrollTop = getScrolled()
     let ticking = false
 
     function updateScrollDir() {
-      let st = window.pageYOffset || content.scrollTop
+      let st = getScrolled()
+      let newValue: ScrollDirection
 
-      // navbar offset
-      if (st <= navbar.offsetHeight) scrollDirection.value = undefined
       // downscroll code
-      else if (st > lastScrollTop) scrollDirection.value = 'down'
+      if (st > lastScrollTop) newValue = ScrollDirection.down
       // upscroll code
-      else if (st < lastScrollTop) scrollDirection.value = 'up'
+      else if (st < lastScrollTop) newValue = ScrollDirection.up
 
-      lastScrollTop = st <= 0 ? 0 : st // For Mobile or negative scrolling
+      if (newValue && scrollDirection.value != newValue)
+        scrollDirection.value = newValue
+
+      lastScrollTop = Math.max(st, 0) // For Mobile or negative scrolling
       ticking = false
     }
 
@@ -41,7 +40,7 @@ export default function useScrollDirection(
 
     // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
     // or window.addEventListener("scroll"....
-    content.addEventListener('scroll', handleScroll, false)
+    content.value.addEventListener('scroll', handleScroll, false)
   })
 
   return scrollDirection

@@ -12,10 +12,10 @@
     "@tailwindcss/typography": "^0.5.2"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.0.1",
+    "@nuxt/content": "@nuxt/content-edge@latest",
     "@nuxtjs/tailwindcss": "^5.1.2",
     "eslint-config-prettier": "^8.3.0",
-    "nuxt": "3.0.0-rc.3",
+    "nuxt": "nuxt3@latest",
     "prettier": "^2.3.2"
   },
   "browserslist": "> 0.5%, not ie 11, not dead"

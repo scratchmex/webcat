@@ -1,40 +1,20 @@
-<template>
-  <div
-    class="
-      relative
-      bg-purple-200
-      flex flex-col
-      h-screen
-      v-screenx
-      border-4 border-black
-      rounded-xl
-      overflow-hidden
-    "
-  >
-    <TheNavbar
-      ref="navbar"
-      class="absolute inset-x-0 md:px-8 px-4 md:py-6 py-4"
-      :scrollDirection="scrollDirection"
-    />
-    <TheLeftbar class="hidden md:flex" />
-
-    <div
-      ref="content"
-      class="md:pl-12 pt-[3.25rem] md:pt-[4.5rem] overflow-y-auto scrollbar"
-    >
-      <slot />
-      <TheFooter class="mt-12" />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import useScrollDirection from '~/utils/useScrollDirection'
 
-const content = ref()
-const navbar = ref()
-const scrollDirection = useScrollDirection(navbar, content)
+const content = ref<HTMLElement>()
+const scrollDirection = useScrollDirection(content)
 </script>
+
+<template>
+  <div
+    class="bg-red-200 h-screen v-screen border-4 border-black rounded-xl overflow-clip flex flex-col lg:flex-row"
+  >
+    <TheNavbar :scrollDirection="scrollDirection"/>
+    <main ref="content" class="grow bg-green-200 overflow-y-auto scrollbar">
+      <NuxtPage />
+    </main>
+  </div>
+</template>
 
 <style>
 body {
